@@ -59,7 +59,7 @@ client.on("message", function(msg){
 module.exports.BunCommand = BunCommand;
 
 //Load command scripts.
-var util = require("./commands/util.js");
+const util = require("./commands/util.js");
 
 const help = new BunCommand("help",{help:{desc:"Show tooltips and help on commands!"}},function(msg){
     //Make an object for the commands featured in this help screen.
