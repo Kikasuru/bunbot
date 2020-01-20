@@ -17,6 +17,8 @@ client.on("ready", function(){
 
 //Export the client and prefix for other scripts.
 module.exports = {client,prefix};
+//Load the Profile Picture changing script.
+require("./bin/pfpchanger.js");
 
 //Grab the token.
 const token = require("./token.json");
