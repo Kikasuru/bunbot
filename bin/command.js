@@ -22,7 +22,7 @@ client.on("message", function(msg){
         var splt = msg.content.split(" ");
         splt[0] = splt[0].replace(prefix,"");
         //Check if the name equals the name or an alias of the command.
-        var cmd = cmds.find(function(e){return e.name === splt[0] || (e.optn.alias && e.optn.alias.has(splt[0]))});
+        var cmd = cmds.find(function(e){return e.name === splt[0] || (e.optn.alias && e.optn.alias.includes(splt[0]))});
 
         //If a command has been found..
         if(cmd){
