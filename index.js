@@ -19,6 +19,8 @@ client.on("ready", function(){
 module.exports = {client,prefix};
 //Load the Profile Picture changing script.
 require("./bin/pfpchanger.js");
+//Load the commands, and grab the command count from the file.
+const {commandCount} = require("./bin/command.js");
 
 //Grab the token.
 const token = require("./token.json");
