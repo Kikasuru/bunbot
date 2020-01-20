@@ -4,10 +4,9 @@ const chalk = require("chalk");
 const {client,prefix} = require("../index.js");
 
 class BunCommand {
-    constructor(name,help,parameters,func){
+    constructor(name,options,func){
         this.name = name;
-        this.help = help;
-        this.para = parameters;
+        this.optn = options;
         this.func = func;
 
         //Log the command that has been created.
@@ -21,29 +20,37 @@ client.on("message", function(msg){
     if(msg.content.startsWith(prefix)){
         //Split the message.
         var splt = msg.content.split(" ");
-        //Find the command.
-        var cmd = cmds.find(function(e){return prefix+e.name === splt[0]});
+        splt[0] = splt[0].replace(prefix,"");
+        //Check if the name equals the name or an alias of the command.
+        var cmd = cmds.find(function(e){return e.name === splt[0] || (e.optn.alias && e.optn.alias.has(splt[0]))});
 
         //If a command has been found..
         if(cmd){
             //Log that a command execution has been attempted.
             console.log(msg.author.tag+chalk.gray(" HAS EXECUTED ")+msg.content);
-            //Check if the parameters are set.
-            if(splt.length === cmd.para.length+1){
-                //If they are, index the parameters into an object.
-                var para = {};
-                cmd.para.forEach(function(e,i){
-                    para[e] = splt[i+1];
-                });
+            //Check if the command needs parameters.
+            if(cmd.optn.para){
+                //Check if the parameters are set.
+                if(splt.length === cmd.optn.para.length+1){
+                    //If they are, index the parameters into an object.
+                    var para = {};
+                    cmd.optn.para.forEach(function(e,i){
+                        para[e] = splt[i+1];
+                    });
 
-                //Finnaly, execute the command.
-                cmd.func(msg,para);
+                    //Finnaly, execute the command.
+                    cmd.func(msg,para);
+                } else {
+                    //Send an error message.
+                    msg.channel.send("**Incorrect parameters.**\n\nParameters needed are:\n``"+cmd.optn.para.join(" ")+"``");
+                    //Log an error message.
+                    console.log(chalk.red("ERROR: INCORRECT PARAMETERS"));
+                }
             } else {
-                //Send an error message.
-                msg.channel.send("**Incorrect parameters.**\n\nParameters needed are:\n``"+cmd.para.join(" ")+"``");
-                //Log an error message.
-                console.log(chalk.red("ERROR: INCORRECT PARAMETERS"));
+                //If not, execute the command.
+                cmd.func(msg);
             }
+
         }
     }
 });
@@ -54,7 +61,7 @@ module.exports.BunCommand = BunCommand;
 //Load command scripts.
 var util = require("./commands/util.js");
 
-const help = new BunCommand("help","Show tooltips and help on commands!",[],function(msg,para){
+const help = new BunCommand("help",{help:{desc:"Show tooltips and help on commands!"}},function(msg){
     //Make an object for the commands featured in this help screen.
     const cmds = [
         {
@@ -72,7 +79,7 @@ const help = new BunCommand("help","Show tooltips and help on commands!",[],func
     cmds.forEach(function(ecat){
         helpStg += "\n**"+ecat.name+"**\n```"
         ecat.cmds.forEach(function(ecmd,i){
-            helpStg += "  - "+ecmd.name+" - "+ecmd.help+"\n";
+            helpStg += "  - "+ecmd.name+" - "+ecmd.optn.help.desc+"\n";
         });
         helpStg +="```\n\n"
     });
