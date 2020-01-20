@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Kikasuru/bunbot#readme",
   "dependencies": {
+    "chalk": "^3.0.0",
     "discord.js": "^11.5.1"
   }
 }
