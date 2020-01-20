@@ -77,11 +77,11 @@ const help = new BunCommand("help",{help:{desc:"Show tooltips and help on comman
     var helpStg = "";
 
     cmds.forEach(function(ecat){
-        helpStg += "\n**"+ecat.name+"**\n```"
+        helpStg += "**"+ecat.name+"**\n```"
         ecat.cmds.forEach(function(ecmd,i){
             helpStg += "  - "+ecmd.name+" - "+ecmd.optn.help.desc+"\n";
         });
-        helpStg +="```\n\n"
+        helpStg +="```\n"
     });
     msg.channel.send(helpStg);
 });
