@@ -34,6 +34,7 @@ client.on("message", function(msg){
                 msg.channel.send("**Command is NSFW.**\nPlease run this command in an NSFW channel or a DM to the bot.");
                 //Log an error message.
                 console.log(chalk.red("ERROR: NOT NSFW"));
+                return;
             }
             //Check if the command needs parameters.
             if(cmd.optn.para){
