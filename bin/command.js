@@ -28,6 +28,13 @@ client.on("message", function(msg){
         if(cmd){
             //Log that a command execution has been attempted.
             console.log(msg.author.tag+chalk.gray(" HAS EXECUTED ")+msg.content);
+            //Check if the command is NSFW and not in a NSFW channel or DM channel.
+            if(cmd.optn.nsfw && (!msg.channel.nsfw || !msg.type === dm)){
+                //Send an error message.
+                msg.channel.send("**Command is NSFW.**\nPlease run this command in an NSFW channel or a DM to the bot.");
+                //Log an error message.
+                console.log(chalk.red("ERROR: NOT NSFW"));
+            }
             //Check if the command needs parameters.
             if(cmd.optn.para){
                 //Check if the parameters are set.
