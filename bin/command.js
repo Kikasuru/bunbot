@@ -38,15 +38,24 @@ client.on("message", function(msg){
             }
             //Check if the command needs parameters.
             if(cmd.optn.para){
-                //Check if the parameters are set.
-                if(splt.length === cmd.optn.para.length+1){
-                    //If they are, index the parameters into an object.
-                    var para = {};
-                    cmd.optn.para.forEach(function(e,i){
-                        para[e] = splt[i+1];
-                    });
+                //Go through each parameter and index variables into an object.
+                var para = {};
+                var paraFilled = true;
 
-                    //Finnaly, execute the command.
+                for(var i=0;i<cmd.optn.para.length;i++){
+                    //Check if a variabe is avalible for this parameter.
+                    if(splt[i+1]){
+                        //Add an entry for this command.
+                        para[cmd.optn.para[i].name] = splt[i+1];
+                    } else {
+                        //Check if this parameter is not optional.
+                        if(!cmd.optn.para[i].optional) paraFilled = false;
+                    }
+                }
+
+                //Check if the parameters are set.
+                if(paraFilled){
+                    //Execute the command.
                     cmd.func(msg,para);
                 } else {
                     //Send an error message.
