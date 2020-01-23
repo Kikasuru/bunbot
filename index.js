@@ -7,7 +7,7 @@ const chalk = require("chalk");
 const client = new Discord.Client();
 
 //Set the prefix.
-const prefix = "b*"
+const prefix = "b*";
 
 client.on("ready", function(){
     console.log(chalk.green("BUNBOT API STARTED"));
