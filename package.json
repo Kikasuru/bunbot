@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Kikasuru/bunbot#readme",
   "dependencies": {
     "chalk": "^3.0.0",
-    "discord.js": "^11.5.1"
+    "danbooru": "^3.1.0",
+    "discord.js": "^11.5.1",
+    "garfield": "^1.1.2"
   }
 }
