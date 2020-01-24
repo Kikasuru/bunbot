@@ -31,7 +31,6 @@ class textObject{
 
         //Make a this variable for the setInterval.
         var text = this;
-        console.log(text)
         //Start an interval for every 16 milliseconds.
         var texttic = setInterval(function(){
             //Check if the typetic has gotten to 0.
@@ -70,6 +69,62 @@ function init(){
         var text = new textObject(texts[getRandomInt(texts.length)]);
         text.spawn();
     },1000);
+}
+
+class Carrot{
+    constructor(xpos,yvol,yfrc,spin,angl){
+        this.xpos = xpos; //Percentage
+        this.ypos = -20;  //Pixel
+        this.yvol = yvol; //Pixel
+        this.yfrc = yfrc; //Pixel
+        this.spin = spin; //Angle
+        this.angl = angl; //Angle
+    }
+
+    spawn(){
+        //Create a new div for the carrot.
+        var carrot = document.createElement("div");
+        //Set the class of said carrot to the carrot class.
+        carrot.className = "carrot";
+        //Add said carrot to the background element.
+        document.getElementById("carrottime").appendChild(carrot);
+        //Set the carrot to the xpos and ypos.
+        carrot.style.left = this.xpos+"%";
+        carrot.style.bottom = this.ypos+"px";
+        //Set the rotation of the carrot.
+        carrot.style.transform = "rotate("+this.angl+"deg)";
+
+        //Make a this variable for the setInterval.
+        var crtinfo = this;
+        //Start an interval for every 16 milliseconds.
+        var crttic = setInterval(function(){
+            //Check if the ypos is lower than -40.
+            if(crtinfo.ypos < -40){
+                //Remove the carrot.
+                document.getElementById("carrottime").removeChild(carrot);
+                //Clear the interval.
+                clearInterval(crttic);
+            }
+            //Add yvol to ypos.
+            crtinfo.ypos += crtinfo.yvol
+            //Apply the friction to the yvol.
+            crtinfo.yvol -= crtinfo.yfrc
+            //Set the position of the carrot.
+            carrot.style.bottom = crtinfo.ypos+"px";
+            //Add the spin to the angle.
+            crtinfo.angl += crtinfo.spin;
+            //Set the rotation of the carrot.
+            carrot.style.transform = "rotate("+crtinfo.angl+"deg)";
+        },16);
+    }
+}
+
+//CARROTS!
+function spawnCarrots(){
+    for(var i=0;i<10;i++){
+        var carrot = new Carrot(getRandomInt(100),getRandomInt(30)+30,2,getRandomInt(20)-10,getRandomInt(360));
+        carrot.spawn();
+    }
 }
 
 //Utility Functions

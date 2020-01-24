@@ -22,14 +22,27 @@
             bottom:0;
             right:0;
             background-image:url("./assets/overdrive.gif");
+            user-select:none;
+        }
+
+        .carrot {
+            width:50px;
+            height:50px;
+            position:fixed;
+            background-image:url("./assets/carrot.png");
+            background-size:cover;
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap" rel="stylesheet">
     <script src="./bin/index.js"></script>
 </head>
 <body onload="init()">
-    <div id="overdrive"></div>
+    <div id="carrottime">
+
+    </div>
     <div id="floattextback">
 
     </div>
+    <div id="overdrive" onclick="spawnCarrots()"></div>
+
 </body>
