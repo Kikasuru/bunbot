@@ -28,6 +28,8 @@ client.on("message", function(msg){
         if(cmd){
             //Log that a command execution has been attempted.
             console.log(msg.author.tag+chalk.gray(" HAS EXECUTED ")+msg.content);
+            //Check if an inital function exists and execute it if it does.
+            if(cmd.func.init) cmd.func.init();
             //Check if a function has been called and if said function exists.
             if(func[1] && cmd.data.func[func[1]]){
                 //Change func to the name of the function.
