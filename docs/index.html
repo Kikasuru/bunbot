@@ -4,6 +4,7 @@
         body {
             overflow:hidden;
             background-color:#1b181f;
+            user-select:none;
         }
 
         .floattext {
@@ -12,7 +13,6 @@
             display:block;
             white-space:nowrap;
             font-family: 'Roboto Mono', monospace;
-            user-select:none;
         }
 
         #overdrive {
@@ -22,7 +22,6 @@
             bottom:0;
             right:0;
             background-image:url("./assets/overdrive.gif");
-            user-select:none;
         }
 
         .carrot {
@@ -32,17 +31,57 @@
             background-image:url("./assets/carrot.png");
             background-size:cover;
         }
+
+        #mainpanel {
+            width:440px;
+            position:fixed;
+            top:calc(50% - 200px);
+            left:calc(50% - 220px);
+            text-align:center;
+            font-family: 'Open Sans', sans-serif;
+            color:#000000;
+            background-color:#ffffff;
+            border-radius:10px;
+            padding:20px;
+        }
+
+        #mainpanel .button {
+            width:400px;
+            text-align:center;
+            padding:20px;
+            border-radius:10px;
+            color:#ffffff;
+            background-color: #000000;
+            display:block;
+            transition: background-color 0.2s, color 0.2s;
+            font-size:20px;
+            margin-bottom:10px;
+        }
+
+        #mainpanel .button:hover {
+            background-color: #cd9bd1;
+            color:#000000;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
         #overmusic {
             display: none
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="./bin/index.js"></script>
     <script src="./bin/overdrive.js"></script>
 </head>
 <body onload="init()">
     <div id="floattextback"></div>
 
+    <div id="mainpanel">
+        <span style="font-size:70px;">BunBot</span><br>
+        <span style="font-style:italic;">A Touhou Discord bot.</span><br>
+        <span class="button" onclick="location.href = 'https://discordapp.com/api/oauth2/authorize?client_id=668687198035509254&permissions=268741696&scope=bot'"><i class="fab fa-discord"></i> Invite to your server.</span>
+        <span class="button" onclick="location.href = 'https://github.com/Kikasuru/bunbot'"><i class="fab fa-github"></i> See the docs.</span>
+        <span class="button"><i class="fas fa-terminal"></i> Get the list of commands.</span>
     </div>
 
     <div id="carrottime"></div>
