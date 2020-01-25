@@ -9,7 +9,7 @@ const help = new BunCommand("help",{
 
 const invite = new BunCommand("invite",{
     func:{default:{run:function(msg){
-        msg.channel.send("Here's your invite!\nhttps://discordapp.com/api/oauth2/authorize?client_id=668687198035509254&permissions=268741696&scope=bot");
+        msg.channel.send("My invite is in my webpage!\nhttps://kikasuru.github.io/bunbot/");
     }}}
 });
 
