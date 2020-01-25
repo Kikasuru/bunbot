@@ -32,17 +32,20 @@
             background-image:url("./assets/carrot.png");
             background-size:cover;
         }
+        #overmusic {
+            display: none
+        }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap" rel="stylesheet">
     <script src="./bin/index.js"></script>
+    <script src="./bin/overdrive.js"></script>
 </head>
 <body onload="init()">
-    <div id="carrottime">
+    <div id="floattextback"></div>
 
     </div>
-    <div id="floattextback">
 
-    </div>
+    <div id="carrottime"></div>
     <div id="overdrive" onclick="spawnCarrots()"></div>
-
+    <audio id="overmusic" src="./assets/overdrive.mp3" preload="auto">
 </body>
