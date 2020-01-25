@@ -4,11 +4,17 @@ let cursor = 0;
 const KONAMI_CODE = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
 document.addEventListener('keydown', (e) => {
     cursor = (e.keyCode == KONAMI_CODE[cursor]) ? cursor + 1 : 0;
-    if (cursor == KONAMI_CODE.length) activateOVERDRIVE();
+    if (cursor == KONAMI_CODE.length){
+        activateOVERDRIVE();
+        cursor = 0;
+    }
 });
 
 function activateOVERDRIVE(){
     var overdrive = document.getElementById("overmusic");
+
+    //Set the music time to 0 and start it.
+    overdrive.currentTime = 0;
     overdrive.play();
 
     //Make a beat variable.
