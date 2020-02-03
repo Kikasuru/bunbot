@@ -28,8 +28,9 @@ client.on("message", function(msg){
         if(cmd){
             //Log that a command execution has been attempted.
             console.log(msg.author.tag+chalk.gray(" HAS EXECUTED ")+msg.content);
-            //Check if an inital function exists and execute it if it does.
-            if(cmd.data.init) cmd.data.init(msg);
+            //Check if an inital function exists and execute it and save the variable if it does.
+            var init;
+            if(cmd.data.func.init) init = cmd.data.func.init(msg);
             //Check if a function has been called and if said function exists.
             if(func[1] && cmd.data.func[func[1]]){
                 //Change func to the name of the function.
@@ -66,7 +67,7 @@ client.on("message", function(msg){
                 //Check if the parameters are set.
                 if(paraFilled){
                     //Execute the command.
-                    cmd.data.func[func].run(msg,para);
+                    cmd.data.func[func].run(msg,para,init?init:null);
                 } else {
                     //Send an error message.
                     msg.channel.send("**Incorrect parameters.**\n\nParameters needed are:\n``"+cmd.data.para.join(" ")+"``");
@@ -75,7 +76,7 @@ client.on("message", function(msg){
                 }
             } else {
                 //If not, execute the command.
-                cmd.data.func[func].run(msg);
+                cmd.data.func[func].run(msg,init?init:null);
             }
 
         }
