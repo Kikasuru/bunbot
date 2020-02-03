@@ -89,13 +89,15 @@ module.exports.BunCommand = BunCommand;
 //Load command scripts.
 const util = require("./commands/util.js");
 const fun  = require("./commands/fun.js");
+const doll = require("./commands/dolls.js");
 
 //Make a command array.
 var cmds = [
     util.help,
     util.invite,
     fun.danbooru,
-    fun.garfield
+    fun.garfield,
+    doll.dollcmd
 ];
 
 //Export the command count.

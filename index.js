@@ -22,6 +22,9 @@ require("./bin/pfpchanger.js");
 //Load the commands, and grab the command count from the file.
 const {commandCount} = require("./bin/command.js");
 
+//Load the database script.
+require("./bin/sql.js");
+
 //Grab the token.
 const token = require("./token.json");
 //Sign in using the token.

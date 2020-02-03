@@ -20,6 +20,7 @@
     "chalk": "^3.0.0",
     "danbooru": "^3.1.0",
     "discord.js": "^11.5.1",
-    "garfield": "^1.1.2"
+    "garfield": "^1.1.2",
+    "sqlite3": "^4.1.1"
   }
 }
