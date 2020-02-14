@@ -49,6 +49,8 @@ class textObject{
                 document.getElementById("floattextback").removeChild(span);
                 //Clear the interval.
                 clearInterval(texttic);
+                //Delete the Class.
+                delete this; //gun
             } else {
                 //Decrease fadetic.
                 text.fadetic--;
@@ -104,6 +106,8 @@ class Carrot{
                 document.getElementById("carrottime").removeChild(carrot);
                 //Clear the interval.
                 clearInterval(crttic);
+                //Delete the Class.
+                delete this; //gun
             }
             //Add yvol to ypos.
             crtinfo.ypos += crtinfo.yvol
