@@ -50,7 +50,7 @@ class textObject{
                 //Clear the interval.
                 clearInterval(texttic);
                 //Delete the Class.
-                delete this; //gun
+                delete text;
             } else {
                 //Decrease fadetic.
                 text.fadetic--;
@@ -107,7 +107,7 @@ class Carrot{
                 //Clear the interval.
                 clearInterval(crttic);
                 //Delete the Class.
-                delete this; //gun
+                delete this;
             }
             //Add yvol to ypos.
             crtinfo.ypos += crtinfo.yvol
