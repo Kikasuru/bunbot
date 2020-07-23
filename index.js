@@ -15,8 +15,9 @@ client.on("ready", function(){
     console.log(chalk.gray("LOGGED IN AS: ")+client.user.tag);
 });
 
-//Export the client and prefix for other scripts.
-module.exports = {client,prefix};
+//Export the client, prefix, and command list for other scripts.
+module.exports = {client,prefix,cmds};
+
 //Load the Profile Picture changing script.
 require("./bin/pfpchanger.js");
 
@@ -24,6 +25,7 @@ require("./bin/pfpchanger.js");
 const util = require("./bin/commands/util.js");
 const fun  = require("./bin/commands/fun.js");
 const doll = require("./bin/commands/dolls.js");
+const test = require("./bin/commands/test.js");
 
 //Make a command array.
 var cmds = [
@@ -31,11 +33,9 @@ var cmds = [
     util.invite,
     fun.danbooru,
     fun.garfield,
-    doll.dollcmd
+    doll.dollcmd,
+    test.whole
 ];
-
-//Export the list of commands.
-module.exports.cmds = cmds;
 
 //Load the database script.
 require("./bin/sql.js");
