@@ -11,7 +11,7 @@ const prefix = "b*";
 
 client.on("ready", function(){
     console.log(chalk.green("BUNBOT API STARTED"));
-    console.log(chalk.gray("COMMANDS LOADED: ")+commandCount);
+    console.log(chalk.gray("COMMANDS LOADED: ")+cmds.length);
     console.log(chalk.gray("LOGGED IN AS: ")+client.user.tag);
 });
 
@@ -19,8 +19,20 @@ client.on("ready", function(){
 module.exports = {client,prefix};
 //Load the Profile Picture changing script.
 require("./bin/pfpchanger.js");
-//Load the commands, and grab the command count from the file.
-const {commandCount} = require("./bin/command.js");
+
+//Load command scripts.
+const util = require("./bin/commands/util.js");
+const fun  = require("./bin/commands/fun.js");
+const doll = require("./bin/commands/dolls.js");
+
+//Make a command array.
+var cmds = [
+    util.help,
+    util.invite,
+    fun.danbooru,
+    fun.garfield,
+    doll.dollcmd
+];
 
 //Load the database script.
 require("./bin/sql.js");
