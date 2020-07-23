@@ -50,7 +50,7 @@ class textObject{
                 //Clear the interval.
                 clearInterval(texttic);
                 //Delete the Class.
-                delete text;
+                text = null;
             } else {
                 //Decrease fadetic.
                 text.fadetic--;
