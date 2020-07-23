@@ -34,6 +34,9 @@ var cmds = [
     doll.dollcmd
 ];
 
+//Export the list of commands.
+module.exports.cmds = cmds;
+
 //Load the database script.
 require("./bin/sql.js");
 

@@ -1,7 +1,7 @@
 //Import the chalk module for some sweet colors.
 const chalk = require("chalk");
-//Get the client and prefix from the main script.
-const {client,prefix} = require("../index.js");
+//Get the client, prefix, and command list from the main script.
+const {client,prefix,cmds} = require("../index.js");
 
 class BunCommand {
     constructor(name,data){
@@ -55,9 +55,12 @@ client.on("message", function(msg){
 
                 for(var i=0;i<cmd.data.func[func].para.length;i++){
                     //Check if a variabe is avalible for this parameter.
-                    if(splt[i+1]){
+                    var paraVar = splt[i+1];
+                    if(paraVar){
+                        //Check if this parameter needs the whole sentence, and mash all the splits if so.
+                        if(cmd.data.func[func].para[i].whole) paraVar = splt.joinFromRange(" ",1)
                         //Add an entry for this command.
-                        para[cmd.data.func[func].para[i].name] = splt[i+1];
+                        para[cmd.data.func[func].para[i].name] = paraVar;
                     } else {
                         //Check if this parameter is not optional.
                         if(!cmd.data.func[func].para[i].optional) paraFilled = false;
@@ -85,3 +88,11 @@ client.on("message", function(msg){
 
 //Export BunCommand.
 module.exports.BunCommand = BunCommand;
+
+//Utility Commands
+Array.prototype.joinFromRange = function(seperator,start,end){
+    if(!start) start = 0;
+    if(!end) end = this.length - 1;
+    end++;
+    return this.slice(start,end).join(seperator);
+};
