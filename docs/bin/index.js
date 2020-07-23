@@ -107,7 +107,7 @@ class Carrot{
                 //Clear the interval.
                 clearInterval(crttic);
                 //Delete the Class.
-                delete text;
+                crtinfo = null
             }
             //Add yvol to ypos.
             crtinfo.ypos += crtinfo.yvol
