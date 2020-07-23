@@ -80,7 +80,7 @@ function setDollData(id,col,value){
 function newDoll(doll,user){
     return new Promise(function(res,rej){
         db.get(`INSERT INTO doll (type,name,personality,trust,friends,original,shiny)
-        VALUES ((?),(?),(?),(?),(?),(?),(?))`,[doll.type.iname,doll.name,doll.personality,doll.friends,doll.original,doll.shiny:1?0],function(err,row){
+        VALUES ((?),(?),(?),(?),(?),(?),(?))`,[doll.type.iname,doll.name,doll.personality,doll.friends,doll.original,doll.shiny?1:0],function(err,row){
             //If error, reject with the error.
             if(err) {
                 rej(err);
