@@ -13,13 +13,19 @@ client.on("ready", function(){
     console.log(chalk.green("BUNBOT API STARTED"));
     console.log(chalk.gray("COMMANDS LOADED: ")+cmds.length);
     console.log(chalk.gray("LOGGED IN AS: ")+client.user.tag);
+
+    //Create new CommandHandler and PFPChanger objects.
+    cmdhandler = new CommandHandler();
+    pfpchanger = new PFPChanger();
+
+    //Start these new objects.
+    cmdhandler.start(client, prefix, cmds);
+    pfpchanger.start(client, prefix);
 });
 
-//Export the client, prefix, and command list for other scripts.
-module.exports = {client,prefix,cmds};
-
-//Load the Profile Picture changing script.
-require("./bin/pfpchanger.js");
+//Grab the CommandHandler and PFPChanger classes.
+const {CommandHandler} = require("./bin/commandhandler.js");
+const {PFPChanger} = require("./bin/pfpchanger.js");
 
 //Load command scripts.
 const util = require("./bin/commands/util.js");
@@ -37,8 +43,8 @@ var cmds = [
     test.whole
 ];
 
-//Load the database script.
-require("./bin/sql.js");
+//Export the client, prefix, and command list for other scripts.
+module.exports = {client,prefix,cmds};
 
 //Grab the token.
 const token = require("./token.json");
