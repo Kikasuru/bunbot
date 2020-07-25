@@ -11,7 +11,8 @@ var helptext = [
     "garfield - Show the most recent page of the holy bible.",
     "\u00A0\u00A0Aliases: bible",
     "\u00A0\u00A0Functions:",
-    "\u00A0\u00A0\u00A0\u00A0rand - Show a random page of the holy bible."
+    "\u00A0\u00A0\u00A0\u00A0rand - Show a random page of the holy bible.",
+    "suwako - Suwako has an announcement to make. (Ported from Niit.)"
 ]
 
 function init(){

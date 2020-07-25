@@ -38,6 +38,7 @@ var cmds = [
     util.invite,
     fun.danbooru,
     fun.garfield,
+    fun.suwako,
     doll.dollcmd
 ];
 
