@@ -64,7 +64,7 @@ class CommandHandler {
                             cmd.data.func[func].run(msg,para,init?init:null);
                         } else {
                             //Send an error message.
-                            msg.channel.send("**Incorrect parameters.**\n\nParameters needed are:\n``"+cmd.data.para.join(" ")+"``");
+                            msg.channel.send("**Incorrect parameters.**\n\nParameters needed are:\n``"+cmd.data.func[func].para.join(" ")+"``");
                             //Log an error message.
                             console.log(chalk.red("ERROR: INCORRECT PARAMETERS"));
                         }
