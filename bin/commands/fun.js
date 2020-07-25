@@ -16,12 +16,18 @@ const garf = require("garfield");
 function booruembed(msg,tagstr){
     //Search Danbooru for posts with the 1st tag and the 2nd tag if it exists.
     booru.posts({tags:tagstr,random:true,limit:1}).then(function(post){
+        if(!post[0]){
+            //Send an error message.
+            msg.channel.send("**No post was found meeting the criteria. Maybe you mispelt a tag?**");
+            //Log an error message.
+            console.log(chalk.red("ERROR: NO POSTS"));
+            return;
+        }
         msg.channel.send({embed:{
             "title": "Danbooru Post",
             "description": "ID: "+post[0].id,
             "url": "https://danbooru.donmai.us/posts/"+post[0].id,
             "footer": {
-                "icon_url": client.user.avatarURL,
                 "text": "BunBot"
             },
             "image": {
@@ -71,7 +77,7 @@ const danbooru = new BunCommand("danbooru",{
         nsfw:true,
         func:{
             default:{
-                para:[{name:"tag1",optional:true},{name:"tag2",optional:true},{name:"tag3",optional:true}],
+                para:[{name:"tag1"},{name:"tag2",optional:true},{name:"tag3",optional:true}],
                 run:function(msg,para){
                     //Define the string query.
                     var tagstr = "";
@@ -84,12 +90,6 @@ const danbooru = new BunCommand("danbooru",{
 
                     //Send the picture.
                     booruembed(msg,tagstr);
-                }
-            },
-            id:{
-                para:[{name:"id"}],
-                run:function(msg,para){
-                    booruembed(msg,"id:"+para.id);
                 }
             }
         }
