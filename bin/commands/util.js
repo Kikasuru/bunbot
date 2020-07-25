@@ -3,7 +3,7 @@ const {BunCommand} = require("../command.js");
 
 const help = new BunCommand("help",{
     func:{default:{run:function(msg){
-        msg.channel.send("List of Commands: https://kikasuru.github.io/bunbot/commands.html");
+        msg.channel.send("List of Commands: https://github.com/Kikasuru/bunbot/blob/master/docs/commands.md");
     }}}
 });
 
