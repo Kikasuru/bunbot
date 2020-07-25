@@ -3,9 +3,9 @@ const chalk = require("chalk");
 
 class CommandHandler {
     constructor(){}
-    start(client, prefix, cmds){
-        //Start the command handler.
-        client.on("message", function(msg){
+    handler(prefix, cmds){
+        //Return the command handler.
+        return function(msg){
             //If the content starts with the prefix..
             if(msg.content.startsWith(prefix)){
                 //Split the message.

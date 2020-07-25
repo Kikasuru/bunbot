@@ -19,7 +19,7 @@ client.on("ready", function(){
     pfpchanger = new PFPChanger();
 
     //Start these new objects.
-    cmdhandler.start(client, prefix, cmds);
+    client.on("message", cmdhandler.handler(prefix, cmds));
     pfpchanger.start(client, prefix);
 });
 
@@ -27,7 +27,7 @@ client.on("ready", function(){
 const {CommandHandler} = require("./bin/commandhandler.js");
 const {PFPChanger} = require("./bin/pfpchanger.js");
 
-//Load command scripts.
+//Grab all of the commands.
 const util = require("./bin/commands/util.js");
 const fun  = require("./bin/commands/fun.js");
 const doll = require("./bin/commands/dolls.js");
