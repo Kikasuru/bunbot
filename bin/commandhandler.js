@@ -10,10 +10,14 @@ class CommandHandler {
             if(msg.content.startsWith(prefix)){
                 //Split the message.
                 var splt = msg.content.split(" ");
+                //Remove the prefix from the command.
                 splt[0] = splt[0].replace(prefix,"");
-                var func = splt[0].split(":");
+                //Set the function to default, we'll change this later.
+                var func = "default"
                 //Check if the name equals the name or an alias of the command.
-                var cmd = cmds.find(function(e){return e && (e.name === func[0] || (e.data.alias && e.data.alias.includes(func[0])))});
+                var cmd = cmds.find(function(e){return e && (e.name === splt[0] || (e.data.alias && e.data.alias.includes(splt[0])))});
+                //Remove the command from splt.
+                splt.shift()
 
                 //If a command has been found..
                 if(cmd){
@@ -22,13 +26,12 @@ class CommandHandler {
                     //Check if an inital function exists and execute it and save the variable if it does.
                     var init;
                     if(cmd.data.func.init) init = cmd.data.func.init(msg);
-                    //Check if a function has been called and if said function exists.
-                    if(func[1] && cmd.data.func[func[1]]){
+                    //Check if the function referenced by the first parameter exists.
+                    if(cmd.data.func[splt[0]]){
                         //Change func to the name of the function.
-                        func = func[1];
-                    } else {
-                        //Change func to default.
-                        func = "default";
+                        func = splt[0];
+                        //Remove the function from the parameters.
+                        splt.shift()
                     }
                     //Check if the command is NSFW and not in a NSFW channel or DM channel.
                     if(cmd.data.nsfw && (!msg.channel.nsfw || !msg.type === "dm")){
@@ -46,10 +49,10 @@ class CommandHandler {
 
                         for(var i=0;i<cmd.data.func[func].para.length;i++){
                             //Check if a variabe is avalible for this parameter.
-                            var paraVar = splt[i+1];
+                            var paraVar = splt[i];
                             if(paraVar){
                                 //Check if this parameter needs the whole sentence, and mash all the splits if so.
-                                if(cmd.data.func[func].para[i].whole) paraVar = splt.joinFromRange(" ",1)
+                                if(cmd.data.func[func].para[i].whole) paraVar = splt.join(" ")
                                 //Add an entry for this command.
                                 para[cmd.data.func[func].para[i].name] = paraVar;
                             } else {
@@ -81,11 +84,3 @@ class CommandHandler {
 
 //Export CommandHandler.
 module.exports.CommandHandler = CommandHandler;
-
-//Utility Functions
-Array.prototype.joinFromRange = function(seperator,start,end){
-    if(!start) start = 0;
-    if(!end) end = this.length - 1;
-    end++;
-    return this.slice(start,end).join(seperator);
-};

@@ -9,11 +9,11 @@ var helptext = [
     "danbooru - Search Danbooru for some cool anime images! (NSFW)",
     "\u00A0\u00A0Aliases: db",
     "\u00A0\u00A0Functions:",
-    "\u00A0\u00A0\u00A0\u00A0danbooru:id - Search for a specific Danbooru ID (NSFW)",
+    "\u00A0\u00A0\u00A0\u00A0id - Search for a specific Danbooru ID (NSFW)",
     "garfield - Show the most recent page of the holy bible.",
     "\u00A0\u00A0Aliases: bible",
     "\u00A0\u00A0Functions:",
-    "\u00A0\u00A0\u00A0\u00A0garfield:rand - Show a random page of the holy bible."
+    "\u00A0\u00A0\u00A0\u00A0rand - Show a random page of the holy bible."
 ]
 
 function init(){
