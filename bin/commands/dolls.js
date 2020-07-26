@@ -49,7 +49,7 @@ const dollcmd = new BunCommand("doll",{
     }
 });
 
-module.exports = {doll};
+module.exports = {dollcmd};
 
 //Doll Types
 var doll = {};
