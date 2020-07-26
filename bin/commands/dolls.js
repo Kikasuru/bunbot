@@ -27,10 +27,10 @@ class Doll {
 }
 
 class Area {
-    constructor(iname,name,dollts){
+    constructor(iname,name,flags){
         this.iname  = iname;
         this.name   = name;
-        this.dollts = dollts; //It's not what you're thinking it is.
+        this.flags  = flags;
     }
 
     getDoll(){
