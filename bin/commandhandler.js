@@ -33,8 +33,8 @@ class CommandHandler {
                         //Remove the function from the parameters.
                         splt.shift()
                     }
-                    //Check if the command is NSFW and not in a NSFW channel or DM channel.
-                    if(cmd.data.nsfw && (!msg.channel.nsfw || !msg.type === "dm")){
+                    //Check if the function is NSFW and not in a NSFW channel or DM channel.
+                    if(cmd.data.func[func].nsfw && (!msg.channel.nsfw || !msg.type === "dm")){
                         //Send an error message.
                         msg.channel.send("**Command is NSFW.**\nPlease run this command in an NSFW channel or a DM to the bot.");
                         //Log an error message.

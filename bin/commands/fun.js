@@ -81,9 +81,9 @@ function booruembed(msg,tagstr){
 
 const danbooru = new BunCommand("danbooru",{
         alias:["db"],
-        nsfw:true,
         func:{
             default:{
+                nsfw:true,
                 para:[{name:"tag1"},{name:"tag2",optional:true},{name:"tag3",optional:true}],
                 run:function(msg,para){
                     //Define the string query.
