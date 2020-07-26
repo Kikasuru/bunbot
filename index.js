@@ -45,7 +45,7 @@ var cmds = [
 //Export the client, prefix, and command list for other scripts.
 module.exports = {client,prefix,cmds};
 
-//Grab the token.
-const token = require("./token.json");
+//Grab the token from the config file.
+const token = require("./config.json");
 //Sign in using the token.
-client.login(token.token);
+client.login(config.token);

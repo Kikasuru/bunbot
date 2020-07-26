@@ -1,7 +1,7 @@
 //Import the chalk module for some sweet colors.
 const chalk = require("chalk");
-//Grab the token file, this has the developer's ids in it.
-const token = require("../token.json");
+//Grab the config file, this has the developer's ids in it.
+const token = require("../config.json");
 
 class CommandHandler {
     constructor(){}

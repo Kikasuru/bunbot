@@ -103,8 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# BunBot Token
-TOKEN.json
-
 # Database Files
 data/*
