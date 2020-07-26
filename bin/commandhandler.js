@@ -1,7 +1,7 @@
 //Import the chalk module for some sweet colors.
 const chalk = require("chalk");
 //Grab the config file, this has the developer's ids in it.
-const token = require("../config.json");
+const config = require("../config.json");
 
 class CommandHandler {
     constructor(){}
@@ -44,7 +44,7 @@ class CommandHandler {
                         return;
                     }
                     //Check if this function is a dev only command.
-                    if(cmd.data.func[func].devonly && !token.devids.includes(msg.author.id)){
+                    if(cmd.data.func[func].devonly && !config.devids.includes(msg.author.id)){
                         //Send an error message.
                         msg.channel.send("**Command is Dev-only.**\nPlease ask a developer to run this command.");
                         //Log an error message.
