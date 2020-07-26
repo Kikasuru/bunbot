@@ -1,5 +1,7 @@
 //Import the chalk module for some sweet colors.
 const chalk = require("chalk");
+//Grab the token file, this has the developer's ids in it.
+const token = require("../token.json");
 
 class CommandHandler {
     constructor(){}
@@ -39,6 +41,14 @@ class CommandHandler {
                         msg.channel.send("**Command is NSFW.**\nPlease run this command in an NSFW channel or a DM to the bot.");
                         //Log an error message.
                         console.log(chalk.red("ERROR: NOT NSFW"));
+                        return;
+                    }
+                    //Check if this function is a dev only command.
+                    if(cmd.data.func[func].devonly && !token.devids.includes(msg.author.id)){
+                        //Send an error message.
+                        msg.channel.send("**Command is Dev-only.**\nPlease ask a developer to run this command.");
+                        //Log an error message.
+                        console.log(chalk.red("ERROR: NOT DEV"));
                         return;
                     }
                     //Check if the command needs parameters.
