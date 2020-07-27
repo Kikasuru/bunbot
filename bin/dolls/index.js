@@ -161,9 +161,9 @@ doll.mai        = new DollType("mai","Mai Teiredia",{spr:[6,12]});
 doll.okina      = new DollType("okina","Okina Matara",{spr:[7,12]});
 //Touhou 17
 doll.eika       = new DollType("eika","Eika Ebisu",{spr:[3,13]});
-doll.urumi      = new DollType("urumi","Urumi Ushizaki",{spr:[7,16]});
+doll.urumi      = new DollType("urumi","Urumi Ushizaki",{spr:[7,15]});
 doll.kutaka     = new DollType("kutaka","Kutaka Niwatari",{spr:[2,14]});
-doll.yachie     = new DollType("yachie","Yachie Kicchou",{spr:[10,16]});
+doll.yachie     = new DollType("yachie","Yachie Kicchou",{spr:[10,15]});
 doll.mayumi     = new DollType("mayumi","Mayumi Joutouguu",{spr:[6,14]});
 doll.keiki      = new DollType("keiki","Keiki Haniyasushin",{spr:[1,14]});
 doll.saki       = new DollType("saki","Saki Kurokoma",{spr:[10,15]});
