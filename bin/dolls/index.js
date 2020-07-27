@@ -1,14 +1,15 @@
-//Import the BunCommand class.
-const {BunCommand} = require("../command.js");
-
 class DollType {
-    constructor(iname,name,baseper){
+    constructor(iname,name,flags){
         this.iname   = iname;
         this.name    = name;
-        this.baseper = baseper;
+        this.flags   = flags;
     }
 
     createDoll(){
+
+    }
+
+    grabEmote(){
 
     }
 }
@@ -27,29 +28,16 @@ class Doll {
 }
 
 class Area {
-    constructor(iname,name,flags){
-        this.iname  = iname;
-        this.name   = name;
-        this.flags  = flags;
+    constructor(iname,name,dollTable){
+        this.iname      = iname;
+        this.name       = name;
+        this.dollTable  = dollTable;
     }
 
     getDoll(){
 
     }
 }
-
-const dollcmd = new BunCommand("doll",{
-    alias:["d"],
-    func:{
-        default:{
-            run:function(msg){
-
-            }
-        }
-    }
-});
-
-module.exports = {dollcmd};
 
 //Doll Types
 var doll = {};
@@ -195,3 +183,10 @@ area.hakurei    = new Area("hakurei","Hakurei Shrine",[
     {doll:doll.reimu,prob:80},
     {doll:doll.marisa,prob:70}
 ]);
+
+module.exports = {doll,area};
+
+//Utility Functions
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}

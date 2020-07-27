@@ -30,7 +30,7 @@ const {PFPChanger} = require("./bin/pfpchanger.js");
 //Grab all of the commands.
 const util = require("./bin/commands/util.js");
 const fun  = require("./bin/commands/fun.js");
-const doll = require("./bin/commands/dolls.js");
+const doll = require("./bin/dolls/discord.js");
 
 //Make a command array.
 var cmds = [
