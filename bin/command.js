@@ -7,7 +7,7 @@ class BunCommand {
         this.data = data;
 
         //Log the command that has been created.
-        console.log(chalk.gray("COMMAND ")+name+chalk.gray(" CREATED"));
+        console.log(chalk.gray("COMMAND ")+name+chalk.gray(" LOADED"));
     }
 }
 
