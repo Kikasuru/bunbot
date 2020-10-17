@@ -6,10 +6,10 @@ const Discord = require("discord.js");
 const Danbooru = require("danbooru");
 //Import the bot client.
 const {client} = require("../../index.js");
-//Grab the token object.
-const token = require("../../token.json");
+//Grab the config object.
+const config = require("../../config.json");
 //Create a booru class.
-const booru = new Danbooru(token.dbtoken);
+const booru = new Danbooru(config.dbtoken);
 //Import the chalk module for some sweet colors.
 const chalk = require("chalk");
 //Import god's bible.
