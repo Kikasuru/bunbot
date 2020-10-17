@@ -149,7 +149,7 @@ const suwako = new BunCommand("suwako",{
     }
 });
 
-module.exports = {danbooru,garfield,suwako};
+module.exports.commands = {danbooru,garfield,suwako};
 
 //Utility Functions
 function fragmentText(text, maxWidth, ctx) {

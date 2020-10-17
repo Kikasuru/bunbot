@@ -13,4 +13,4 @@ const invite = new BunCommand("invite",{
     }}}
 });
 
-module.exports = {help,invite};
+module.exports.commands = {help,invite};
