@@ -1,4 +1,7 @@
 {
     "token":"enter_token_here",
-    "devids":[]
+    "devids":[],
+    "dbtoken":"enter_danbooru_token_here",
+    "dollservers":["737113397505556633","737136797628235809","737114004329201735"],
+    "dserverscomment":"If you do plan on making your own version of BunBot, feel free to ask me for the invites to this."
 }
