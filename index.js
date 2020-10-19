@@ -39,8 +39,8 @@ fs.readdir("./bin/commands", function(err,files){
         const i = require("./bin/commands/" + e);
 
         //Put all of the commands into the command array.
-        Object.keys(i).forEach(function(cmd){
-            cmds.push(cmd);
+        Object.keys(i.commands).forEach(function(cmd){
+            cmds.push(i.commands[cmd]);
         });
     });
 
