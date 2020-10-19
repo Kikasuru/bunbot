@@ -170,14 +170,19 @@ doll.yachie     = new DollType("yachie","Yachie Kicchou",{spr:[10,15]});
 doll.mayumi     = new DollType("mayumi","Mayumi Joutouguu",{spr:[6,14]});
 doll.keiki      = new DollType("keiki","Keiki Haniyasushin",{spr:[1,14]});
 doll.saki       = new DollType("saki","Saki Kurokoma",{spr:[10,15]});
-//Manga Characters
+//Manga and CD Characters
 doll.rinnosuke  = new DollType("rinnosuke","Rinnosuke Morichika",{spr:[1,8]});
 doll.tokiko     = new DollType("tokiko","Tokiko",{spr:[2,8]});
 doll.toyohime   = new DollType("toyohime","Watatsuki no Toyohime",{spr:[10,7]});
 doll.yorihime   = new DollType("yorihime","Watatsuki no Yorihime",{spr:[0,8]});
 doll.kasen      = new DollType("kasen","Kasen Ibaraki",{spr:[7,10]});
 doll.kosuzu     = new DollType("kosuzu","Kosuzu Motoori",{spr:[8,10]});
+doll.maribel    = new DollType("maribel","Maribel Hearn",{spr:[8,7]});
+doll.renko      = new DollType("renko","Renko Usami",{spr:[7,7]});
+doll.akyuu      = new DollType("akyuu","Hieda no Akyuu",{spr:[6,7]});
 //doll.miyoi      = new DollType("miyoi","Miyoi Okunoda",{}); //No Sprite
+//Other Characters
+doll.isami      = new DollType("isami","Isami Asama",{spr:[9,13]})
 
 //Areas
 var area = {};
