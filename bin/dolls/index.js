@@ -1,3 +1,6 @@
+//Grab the doll emote server ids from the config file.
+const {dollservers} = require("../../config.json");
+
 class DollType {
     constructor(iname,name,flags){
         this.iname   = iname;
@@ -9,8 +12,8 @@ class DollType {
 
     }
 
-    grabEmote(){
-
+    grabEmote(client){
+        return client.emojis.find(emote => emote.name === "doll_"+this.iname && dollservers.includes(emote.guild.id))
     }
 }
 
