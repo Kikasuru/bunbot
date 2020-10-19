@@ -51,6 +51,14 @@ class CommandHandler {
                         console.log(chalk.red("ERROR: NOT DEV"));
                         return;
                     }
+                    //Check if this function is an mod only command.
+                    if(cmd.data.func[func].modonly && (!msg.member.hasPermission("MANAGE_GUILD") || !msg.type === "dm")){
+                        //Send an error message.
+                        msg.channel.send("**Command is Mod-only.**\nPlease ask a moderator to run this command.");
+                        //Log an error message.
+                        console.log(chalk.red("ERROR: NOT MOD"));
+                        return;
+                    }
                     //Check if the command needs parameters.
                     if(cmd.data.func[func].para){
                         //Go through each parameter and index variables into an object.
