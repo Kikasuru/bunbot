@@ -12,7 +12,7 @@ function change(client, prefix){
     //Set the status.
     client.user.setActivity(prefix+"help | Danbooru Sauce: "+profile.pictures[pfp].sauce,{type:0});
     //Log this data.
-    console.log(chalk.gray("PROFILE PICTURE SET TO: ")+profile.pictures[pfp].image);
+    console.log(chalk.gray("PROFILE PICTURE SET TO: ")+profile.pictures[pfp].sauce);
 }
 
 class PFPChanger {

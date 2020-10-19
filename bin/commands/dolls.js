@@ -3,7 +3,7 @@ const canvas = require("canvas");
 //Import the BunCommand class.
 const {BunCommand} = require("../command.js");
 //Import dolls and areas from the doll index.
-const {doll,area} = require("./index.js");
+const {doll,area} = require("../dolls/index.js");
 
 const dollcmd = new BunCommand("doll",{
     alias:["d"],
@@ -35,7 +35,7 @@ const dollcmd = new BunCommand("doll",{
                     //Make a canvas for the new emote and make a context for it.
                     const emote = canvas.createCanvas(32,32);
                     const ctx = emote.getContext('2d');
-                    
+
                     //Draw the doll onto the canvas.
                     ctx.drawImage(img,doll[e].flags.spr[0]*32,doll[e].flags.spr[1]*32,32,32,0,0,32,32);
 
@@ -47,4 +47,4 @@ const dollcmd = new BunCommand("doll",{
     }
 });
 
-module.exports = {dollcmd};
+module.exports.commands = {dollcmd};
