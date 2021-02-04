@@ -6,30 +6,30 @@ var db = new sqlite3.Database("../../data.db", function(err){
     if(err) console.log(err);
 });
 
-//Create a sql schema.
-var schema = {
-    user:[
-        {name:"id",type:"INTEGER"},
-        {name:"level",type:"INTEGER"},
-        {name:"exp",type:"INTEGER"}
-    ],
-    server:[
-        {name:"id",type:"INTEGER"},
-        {name:"dollarea",type:"INTEGER"},
-        {name:"shop",type:"TEXT"}
-    ],
-    dolls:[
-        {name:"type",type:"TEXT"},
-        {name:"name",type:"TEXT"},
-        {name:"owner",type:"INTEGER"},
-        {name:"per",type:"TEXT"},
-        {name:"friend",type:"TEXT"},
-        {name:"orgnl",type:"INTEGER"},
-        {name:"shiny",type:"INTEGER"}
-    ]
-}
+// Create each SQL table if it doesn't already exist
+db.run(`
+    CREATE TABLE IF NOT EXISTS user (
+        id INTEGER NOT NULL,
+        level INTEGER DEFAULT 0,
+        exp INTEGER DEFAULT 0
+    );
 
+    CREATE TABLE IF NOT EXISTS server (
+        id INTEGER NOT NULL,
+        dollarea INTEGER,
+        dollareachng INTEGER,
+        shop TEXT
+    );
 
+    CREATE TABLE IF NOT EXISTS dolls (
+        type TEXT,
+        name TEXT,
+        owner INTEGER,
+        per TEXT,
+        friends TEXT,
+        orgnl INTEGER
+    );
+`);
 
 function getUserData(user){
 
@@ -58,7 +58,7 @@ function getDollData(id){
                 return;
             }
             //Otherwise, resolve with the doll.
-            res(new Doll(id,row.type,row.name,row.owner,row.per,row.friend,row.orgnl,row.shiny));
+            res(new Doll(id,row.type,row.name,row.owner,row.per,row.friends,row.orgnl));
         });
     });
 }
@@ -79,8 +79,8 @@ function setDollData(id,col,value){
 
 function newDoll(doll,user){
     return new Promise(function(res,rej){
-        db.get(`INSERT INTO doll (type,name,personality,trust,friends,original,shiny)
-        VALUES ((?),(?),(?),(?),(?),(?),(?))`,[doll.type.iname,doll.name,doll.personality,doll.friends,doll.original,doll.shiny?1:0],function(err,row){
+        db.get(`INSERT INTO doll (type,name,personality,trust,friends,original)
+        VALUES ((?),(?),(?),(?),(?),(?),(?))`,[doll.type.iname,doll.name,doll.personality,doll.friends,doll.original],function(err,row){
             //If error, reject with the error.
             if(err) {
                 rej(err);
@@ -93,3 +93,5 @@ function newDoll(doll,user){
         });
     });
 }
+
+module.exports = {getUserData, getDolls, getDollData, setDollData, newDoll};

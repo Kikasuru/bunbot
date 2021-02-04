@@ -1,5 +1,7 @@
 //Grab the doll emote server ids from the config file.
 const {dollservers} = require("../../config.json");
+// Grab the SQL functions
+const {newDoll} = require("../sql.js");
 
 class DollType {
     constructor(iname,name,flags){
@@ -8,8 +10,10 @@ class DollType {
         this.flags   = flags;
     }
 
-    createDoll(){
-
+    createDoll(user){
+        let doll = new Doll(0, this.iname, this.name, parseInt(user.id), 0, null, parseInt(user.id));
+        doll.id = newDoll(doll, parseInt(user.id));
+        return doll;
     }
 
     grabEmote(client){
@@ -18,7 +22,7 @@ class DollType {
 }
 
 class Doll {
-    constructor(id,type,name,owner,per,friend,orgnl,shiny){
+    constructor(id,type,name,owner,per,friend,orgnl){
         this.id     = id;
         this.type   = type;
         this.name   = name;
@@ -26,7 +30,6 @@ class Doll {
         this.per    = per;
         this.friend = friend;
         this.orgnl  = orgnl;
-        this.shiny  = shiny;
     }
 }
 
@@ -185,12 +188,22 @@ doll.akyuu      = new DollType("akyuu","Hieda no Akyuu",{spr:[6,7]});
 doll.isami      = new DollType("isami","Isami Asama",{spr:[9,13]})
 
 //Areas
-var area = {};
+var area = [];
 
-area.hakurei    = new Area("hakurei","Hakurei Shrine",[
+area.push(new Area("hakurei","Hakurei Shrine",[
     {doll:doll.reimu,prob:80},
-    {doll:doll.marisa,prob:70}
-]);
+    {doll:doll.marisa,prob:70},
+    {doll:doll.suika,prob:70},
+    {doll:doll.yukari,prob:60},
+    {doll:doll.aunn,prob:60},
+    {doll:doll.sunny,prob:50},
+    {doll:doll.star,prob:50},
+    {doll:doll.luna,prob:50},
+    {doll:doll.kasen,prob:50},
+    {doll:doll.clownpiece,prob:40},
+    {doll:doll.shinmyou,prob:30},
+    {doll:doll.shion,prob:30}
+]));
 
 module.exports = {doll,area};
 

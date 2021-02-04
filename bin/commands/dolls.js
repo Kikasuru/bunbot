@@ -4,16 +4,18 @@ const canvas = require("canvas");
 const {BunCommand} = require("../command.js");
 //Import dolls and areas from the doll index.
 const {doll,area} = require("../dolls/index.js");
+// Import the client from index
+const {client} = require("../../index.js");
 
 const dollcmd = new BunCommand("doll",{
     alias:["d"],
     func:{
         default:{
-            devonly:true,
             run:function(msg){
                 msg.channel.send("Coming soon!");
             }
         },
+
         emotes:{
             devonly:true,
             para:[{name:"start"}],
@@ -42,6 +44,22 @@ const dollcmd = new BunCommand("doll",{
                     //Create the emote.
                     msg.guild.createEmoji(emote.toBuffer(),"doll_"+e);
                 });
+            }
+        },
+        
+        emotetest:{
+            devonly:true,
+            para:[{name:"doll",optional:true}],
+            run:function(msg,para){
+                let emotedoll = "";
+
+                // Check if the doll parameter is used and points to a valid doll
+                if (para.doll && Object.keys(doll).includes(para.doll)) {
+                    // Set the emote to this doll
+                    emotedoll = para.doll;
+
+                    msg.channel.send(`${doll[emotedoll].grabEmote(client)}`);
+                }
             }
         }
     }
