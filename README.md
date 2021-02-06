@@ -2,7 +2,7 @@
 A Discord bot featuring numerous gaming related commands and Dolls!
 ## Features and Plans
 - [X] Several image making commands like ``b*suwako``
-- [X] A cool home page
+- [X] [A cool home page](https://kikasuru.github.io/bunbot/)
 - [X] An expansive engine with numerous useful parameters to keep development times low
 - [ ] The Dolls system
 - [ ] Several AI powered image enhancing commands like ``b*waifu2x``
