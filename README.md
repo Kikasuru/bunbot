@@ -3,6 +3,7 @@ A Discord bot featuring numerous gaming related commands and Dolls!
 ## Features and Plans
 - [X] Several image making commands like ``b*suwako``
 - [X] A cool home page
+- [X] An expansive engine with numerous useful parameters to keep development times low
 - [ ] The Dolls system
 - [ ] Several AI powered image enhancing commands like ``b*waifu2x``
 - [ ] Commands relating to Final Fantasy XIV (using [XIVAPI](https://xivapi.com/))
